@@ -1,0 +1,64 @@
+@baseUrl = http://localhost:3000/api
+@resourceName=products
+
+###
+
+#products
+# @name getAllProducts
+GET  {{baseUrl}}/{{resourceName}}
+Content-Type: application/json
+
+{
+    "name":"laptop"
+}
+
+###
+# @name filterProducts
+GET  {{baseUrl}}/{{resourceName}}?color=olive&price_gte=400
+###
+# @name filterFind
+GET  {{baseUrl}}/{{resourceName}}?name_like=sle
+###
+
+# @name pagination
+GET  {{baseUrl}}/{{resourceName}}?page=1&_limit=5
+###
+# @name sort
+GET  {{baseUrl}}/{{resourceName}}?_sort=price&_order=asc
+
+###
+
+# @name addNewCategory
+POST {{baseUrl}}/{{resourceName}}
+Content-Type: application/json
+
+{
+    "categoryId": "6d875fe5-76ef-4a12-bedb-5349350a834f",
+    "name": "Handmade Concrete Table",
+    "color": "salmon",
+    "price": 606,
+    "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+    "createdAt": 1683868775352,
+    "updatedAt": 1683868775352,
+    "thumbnaiUrl": "http://placeimg.com/400/400"
+  }
+
+###
+# @name updateCategory
+PATCH  {{baseUrl}}/{{resourceName}}/I_Dknfx
+Content-Type: application/json
+
+{
+    "categoryId": "6d875fe5-76ef-4a12-bedb-5349350a834f",
+    "name": "Handmade Concrete Table",
+    "color": "salmon",
+    "price": 700,
+    "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+    "createdAt": 1683868775352,
+    "thumbnaiUrl": "http://placeimg.com/400/400"
+  }
+
+###
+
+# @name removeCategory
+DELETE {{baseUrl}}/{{resourceName}}/2
